@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathWay</title>
+    <link rel="icon" href="..\..\Trabalho Atividades Extensionistas\imagens\logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo da barra de pesquisa */
+        #search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        #search-input {
+            width: 600px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 80px;
+        }
+
+        #search-button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            margin-top: 80px;
+            background-color: #00FA9A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #search-button:hover {
+            color: #00FF7F;
+            background-color: #FFFAFA;
+        }
+
+        /* Estilo da aba de resultados */
+        #search-results {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-item {
+            list-style: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 5px auto;
+            max-width: 400px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .result-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .result-item a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: fixed;
+            display: inline-block;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #00FF7F;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .submenu li {
+            padding: 8px 12px;
+        }
+
+        .submenu li a {
+            color: white; /* Submenu dos anos: cor branca */
+            text-decoration: none;
+            display: block;
+        }
+
+        .submenu-materias li a {
+            color: #0ae02e; /* Submenu das matérias: cor verde */
+            text-decoration: none;
+        }
+
+        .submenu li a:hover,
+        .submenu-materias li a:hover {
+            background-color: #0ae02e;
+            color: white; /* Texto branco ao passar o mouse */
+        }
+
+        .opcoes a {
+            color: white; /* Define a cor do texto para branco */
+            text-decoration: none; /* Remove o sublinhado padrão dos links */
+        }
+
+        .opcoes a:hover {
+            color: #ffffff; /* Cor ao passar o mouse por cima (opcional) */
+        }
+
+        .opcoes{
+            position: fixed;
+            display: inline-block;
+            margin-top: -68px;
+            left: 130px;
+        }
+
+        .opcoes2 a {
+            color: white; /* Define a cor do texto para branco */
+            text-decoration: none; /* Remove o sublinhado padrão dos links */
+        }
+
+        .opcoes2 a:hover {
+            color: #ffffff; /* Cor ao passar o mouse por cima (opcional) */
+        }
+
+        .opcoes2{
+            position: fixed;
+            display: inline-block;
+            margin-top: -68px;
+            left: 400px;
+        }
+
+        .opcoes3 a {
+            color: white; /* Define a cor do texto para branco */
+            text-decoration: none; /* Remove o sublinhado padrão dos links */
+        }
+
+        .opcoes3 a:hover {
+            color: #ffffff; /* Cor ao passar o mouse por cima (opcional) */
+        }
+
+        .opcoes3{
+            position: fixed;
+            display: inline-block;
+            margin-top: -68px;
+            left: 650px;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+            position: fixed;
+            z-index: 10; /* Garante que fique acima de outros elementos */
+            max-height: 100vh; /* Limita a altura máxima */
+        }
+
+        .submenu-item:hover .submenu-materias {
+            display: block;
+        }
+
+        .logo img {
+            height: 120px;
+            position: relative; /* Permite deslocar em relação à posição padrão */
+            margin-top: 20px; /* Move para baixo */
+            right: 500px;
+            left: 2px; /* Move para a direita */
+            border: 2px solid white;
+            border-radius: 2px;
+        }
+
+        .submenu-materias {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="logo">
+    <a href="../Pagina principal/index.html">
+        <img src="..\..\Trabalho Atividades Extensionistas\imagens\logo.png" alt="Logo do site">
+    </a>
+    </div>
+        <nav>
+            <ul>
+                <div class="opcoes">
+                    <a href="../Pagina principal/index.html">Home</a>
+                </div>
+                <li class="dropdown">
+                    <a href="#">Conteúdo</a>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 1º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../1/numeros naturais/numeros naturais.html">Contagem e Números Naturais</a></li>
+                                <li><a href="../1/Adição e Subtração Simples/Adição e Subtração.html">Adição e Subtração Simples</a></li>
+                                <li><a href="../1/Figuras Geométricas Básicas/Figuras Geométricas Básicas.html">Figuras Geométricas Básicas</a></li>
+                                <li><a href="../1/Medidas Simples/Medidas Simples.html">Medidas Simples</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 2º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../2/Números e Dezenas/Números e Dezenas.html">Números e Dezenas</a></li>
+                                <li><a href="../2/Adição e Subtração com Mais Dígitos/Adição e Subtração com Mais Dígitos.html">Adição e Subtração com Mais Dígitos</a></li>
+                                <li><a href="../2/Introdução à Multiplicação/Introdução à Multiplicação.html">Introdução à Multiplicação</a></li>
+                                <li><a href="../2/Relação com o Tempo/Relação com o Tempo.html">Relação com o Tempo</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 3º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../3/Multiplicação e Divisão Simples/Multiplicação e Divisão Simples.html">Multiplicação e Divisão Simples</a></li>
+                                <li><a href="../3/Frações Básicas/Frações Básicas.html">Frações Básicas</a></li>
+                                <li><a href="../3/Medidas e Grandezas/Medidas e Grandezas.html">Medidas e Grandezas</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 4º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../4/Geometria Básica/Geometria Básica.html">Geometria Básica</a></li>
+                                <li><a href="../4/Números Decimais/Números Decimais.html">Números Decimais</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 5º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../5/Múltiplos e Divisores/Múltiplos e Divisores.html">Múltiplos e Divisores</a></li>
+                                <li><a href="../5/Números Decimais e Porcentagens/Números Decimais e Porcentagens.html">Números Decimais e Porcentagens</a></li>
+                                <li><a href="../5/Geometria Plana/Geometria Plana.html">Geometria Plana</a></li>
+                                <li><a href="../5/Estatística Simples/Estatística Simples.html">Estatística Simples</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 6º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../6/Expressões Numéricas/Expressões Numéricas.html">Expressões Numéricas</a></li>
+                                <li><a href="../6/Potenciação e Raiz Quadrada/Potenciação e Raiz Quadrada.html">Potenciação e Raiz Quadrada</a></li>
+                                <li><a href="../6/Proporcionalidade e Regra de Três/Proporcionalidade e Regra de Três.html">Proporcionalidade e Regra de Três</a></li>
+                                <li><a href="../6/Geometria Espacial/Geometria Espacial.html">Geometria Espacial</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 7º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../7/Algebra/Algebra.html">Álgebra Básica</a></li>
+                                <li><a href="../7/Porcentagem Avançada/Porcentagem Avançada.html">Porcentagem Avançada</a></li>
+                                <li><a href="../7/Probabilidade e Estatística/Probabilidade e Estatística.html">Probabilidade e Estatística</a></li>
+                                <li><a href="../7/Teorema de Pitágoras/Teorema de Pitágoras.html">Teorema de Pitágoras</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 8º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../8/Equações e Sistemas de Equações/Equações e Sistemas de Equações.html">Equações e Sistemas de Equações</a></li>
+                                <li><a href="../8/Funções Lineares/Funções Lineares.html">Funções Lineares</a></li>
+                                <li><a href="../8/Geometria Analítica/Geometria Analítica.html">Geometria Analítica</a></li>
+                                <li><a href="../8/Progressões Aritméticas(PA)/Progressões Aritméticas(PA).html">Progressões Aritméticas(PA)</a></li>
+                                <li><a href="../8/Progressões Geometricas(PG)/Progressões Geometricas(PG).html">Progressões Geométricas(PG)</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#">Matérias do 9º Ano</a>
+                            <ul class="submenu-materias">
+                                <li><a href="../9/Equações do 2º Grau/Equações do 2º Grau.html">Equações do 2º Grau</a></li>
+                                <li><a href="../9/Funções Quadráticas/Funções Quadráticas.html">Funções Quadráticas</a></li>
+                                <li><a href="../9/Trigonometria Básica/Trigonometria Básica.html">Trigonometria Básica</a></li>
+                                <li><a href="../9/Geometria Espacial Avançada/Geometria Espacial Avançada.html">Geometria Espacial Avançada</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <div class="opcoes2">
+                    <a href="../../Trabalho Atividades Extensionistas/calculadora/calculadora.html">Calculadora Ciêntifica</a>
+                </div>
+                <div class="opcoes3">
+                    <a href="../../Trabalho Atividades Extensionistas/mini-games/mini-game.html">Mini-Games</a>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="anotherMenu">
+        <!-- Adicionando a caixa de pesquisa -->
+        <div id="search-bar">
+            <input type="text" id="search-input" placeholder="Procure por conteúdo...">
+            <button id="search-button" onclick="searchContent()">Pesquisar</button>
+        </div>
+        <!-- Div para exibir os resultados -->
+        <div id="search-results"></div>
+    </section>
+
+    <section id="home">
+        <center><h1>Introdução ao MathWay</h1></center>
+        <br>
+        <p>
+        <h2>Bem-vindo ao MathWay!</h2>
+        O MathWay foi criado para transformar o aprendizado de matemática em uma experiência acessível, divertida e descomplicada. Nosso objetivo é oferecer suporte a estudantes de todos os níveis escolares, professores e qualquer pessoa que queira explorar ou revisar conceitos matemáticos importantes.
+        No MathWay, você encontrará:<br>
+Conteúdo organizado por ano escolar: Desde os primeiros passos com números naturais até tópicos avançados como álgebra, geometria e trigonometria.
+<br>Explicações claras e diretas: Textos didáticos que tornam o aprendizado mais simples.
+<br>Exercícios interativos: Para fortalecer seu entendimento e praticar de forma dinâmica.
+<br>Ferramentas auxiliares: Como calculadoras e recursos visuais para facilitar a compreensão.
+Explore nosso conteúdo usando o menu de navegação ou a barra de pesquisa. Seja bem-vindo à nossa comunidade de aprendizado matemático!
+Juntos, vamos simplificar a matemática! </p>
+            <br>
+            <hr  style="border: 1px solid #00FF7F; width: 100%; margin: 20px auto;">
+            <br>
+            <center><h1>Aqui nos tornamos a matemática mais simples</h1></center>
+            <br>
+            <br>
+            <!-- Container 1 -->
+            <div class="container">
+                <a href="../../Trabalho Atividades Extensionistas/calculadora/calculadora.html">
+                    <img src="..\..\Trabalho Atividades Extensionistas\imagens\calculater.gif" class="ibagem">
+                </a>
+                <center><h3 style="color: black">Calculadoras</h3></center>
+                <div style="color:black">
+                    Nossa Calculadora Ciêntifica possuí funções para Aritmética Básica, Álgebra, Geometria, Trigonometria e muito mais.
+                </div>
+            </div>
+
+            <!-- Container 2 -->
+            <div class="container2">
+                <a href="../../Trabalho Atividades Extensionistas/mini-games/mini-game.html">
+                    <img src="..\..\Trabalho Atividades Extensionistas\imagens\joguin.gif" class="ibagem">
+                </a>
+                <center><h3 style="color: black">Mini-Games</h3></center>
+                <div style="color:black">
+                    Nossos Mini-Games Matematicos ensinam intuitivamente como os nossos conteúdos matematicos funcionam
+                </div>
+            </div>
+            <br>
+            <hr  style="border: 1px solid #00FF7F; width: 100%; margin: 20px auto;">
+    </section>
+
+    <footer>
+        <p>Membros:<br>Vitor Henrique Nascimento Almeida<br>Felipe Augusto Felício Ignacio<br><br><p>
+        <p>&copy; 2024 Todos os Direitos Reservados</p>
+    </footer>
+
+    <script>
+        function searchContent() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const links = document.querySelectorAll('.submenu-materias a');
+            const resultsDiv = document.getElementById('search-results');
+            resultsDiv.innerHTML = ''; // Limpar resultados anteriores
+
+            let found = false;
+
+            links.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    const resultItem = document.createElement('li');
+                    resultItem.className = 'result-item';
+                    resultItem.innerHTML = `<a href="${link.href}" target="_blank">${link.textContent}</a>`;
+                    resultsDiv.appendChild(resultItem);
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                resultsDiv.innerHTML = '<p>Nenhum conteúdo encontrado.</p>';
+            }
+        }
+    </script>
+
+    <!-- Calculadora -->
+    <div id="mini-calculadora" class="calculadora-mini">
+        <div id="calculadora-header" onclick="toggleCalculadora()">Calculadora</div>
+        <div id="calculadora-content">
+            <p id="resultado"></p>
+            <div>
+                <button class="botao" onclick="clean()">C</button>
+                <button class="botao" onclick="back()">←</button>
+                <button class="botao" onclick="insert('(')">(</button>
+                <button class="botao" onclick="insert(')')">)</button>
+            </div>
+            <div>
+                <button class="botao" onclick="insert('7')">7</button>
+                <button class="botao" onclick="insert('8')">8</button>
+                <button class="botao" onclick="insert('9')">9</button>
+                <button class="botao" onclick="insert('/')">/</button>
+            </div>
+            <div>
+                <button class="botao" onclick="insert('4')">4</button>
+                <button class="botao" onclick="insert('5')">5</button>
+                <button class="botao" onclick="insert('6')">6</button>
+                <button class="botao" onclick="insert('*')">X</button>
+            </div>
+            <div>
+                <button class="botao" onclick="insert('1')">1</button>
+                <button class="botao" onclick="insert('2')">2</button>
+                <button class="botao" onclick="insert('3')">3</button>
+                <button class="botao" onclick="insert('-')">-</button>
+            </div>
+            <div>
+                <button class="botao" onclick="insert('0')">0</button>
+                <button class="botao" onclick="insert('.')">.</button>
+                <button class="botao" onclick="calcular()">=</button>
+                <button class="botao" onclick="insert('+')">+</button>
+            </div>
+            <div>
+                <button class="botao" onclick="insert('%')">%</button>
+                <button class="botao" onclick="raizQuadrada()">√</button>
+                <button class="botao" onclick="insert('**')">xⁿ</button>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

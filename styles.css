@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetic, Sans-Serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin-top: 60px;
+}
+
+header {
+    margin-top: -60px;
+    background-color: #00FA9A;
+    padding: 10px 0;
+    position: fixed; /* Fixa o menu na parte superior */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o menu estará acima de outros elementos */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo geral do menu */
+nav{
+    position: sticky; /* Mantém o menu principal no topo ao rolar a página */
+    top: 0;
+    background-color: #00FF7F; /* Cor de fundo para evitar sobreposição */
+    z-index: 15;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Adapta o layout para caber no menu fixo */
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #00FA9A;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #00FA9A;
+    color: white;
+}
+
+/* Submenu principal */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 1;
+}
+.dropdown {
+    top: 30px;
+    left: 250px;
+}
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* Submenu de matérias */
+.submenu-item {
+    position: relative;
+}
+
+.submenu-materias {
+    display: none;
+    position: absolute;
+    left: 100%; /* Exibe ao lado */
+    top: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 1;
+}
+
+.submenu-item:hover .submenu-materias {
+    display: block;
+}
+
+/* Estilo dos links de matérias */
+.submenu-materias li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.submenu-materias li:last-child {
+    border-bottom: none;
+}
+
+.submenu-materias li:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.05); /* Efeito de "salto" */
+}
+
+.submenu-materias a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.submenu-materias a:hover {
+    color: #f6faf6;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #00FA9A;
+}
+
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+#home {
+    text-align: left;
+    background-color: #e8f5e9;
+}
+
+#exercicios {
+    background-color: #ffffff;
+}
+
+#anotherMenu {
+    background-color: #00FF7F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 40px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #00FF7F;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00FF7F;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+#resultado {
+    height: 40px;
+    background-color: #fff;
+    color: black;
+    text-align: right;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.calculadora-mini {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+#calculadora-header {
+    background-color: #00FF7F;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+#calculadora-content {
+    display: none;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.botao {
+    width: 50px;
+    height: 40px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 2px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.botao:hover {
+    background-color: #333;
+}
+
+.container {
+    width: 400px; /* Tamanho do contêiner */
+    height: auto; /* Ajusta automaticamente a altura */
+    overflow: hidden; /* Opcional: oculta conteúdo excedente */
+    width: 350px;
+	background-color: white;
+	border-radius: 7px;
+	box-shadow: 7px 7px 10px #2C3532;
+	margin: auto;
+	padding: 10px;
+	opacity : 0.8;
+    margin-left: 34px;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container2 {
+    width: 350px;
+    height: 346px;
+	background-color: white;
+	border-radius: 7px;
+	box-shadow: 7px 7px 10px #2C3532;
+	margin: auto;
+	padding: 15px;
+	opacity : 0.8;
+    margin-left: 465px;
+    margin-top: -345px;
+}
+
+.container2 img {
+    max-width: 100%;
+    width: 400px;
+    height: 250px;
+}
+
+.ibagem {
+    border: 2px solid black; /* Borda ajustada */
+    border-radius: 2px; /* Bordas arredondadas */
+    max-width: 50%; /* Permite que a imagem não ultrapasse o contêiner pai */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Evita comportamento inline estranho */
+    cursor: pointer; /* Indica que é clicável */
+}
+
+.ibagem:hover{
+    transform:scale(0.8);
+    transition: transform 0.3s;
+}
